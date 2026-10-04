@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jessica Simpson Socks | Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#faf3ee; --blush:#f3d6d2; --blush-2:#f8e6e2; --rose:#c4496f; --rose-dark:#a53a5b;
+  --ink:#3b2a2e; --muted:#7d6a6e; --line:#ead9d5; --white:#fff;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Jost','Helvetica Neue',Arial,sans-serif;
+  --script:'Mrs Saint Delafield',cursive;
+  --nav-h:108px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Announcement + header */
+.announce{background:var(--rose);color:#fff;text-align:center;font-size:13px;letter-spacing:.08em;padding:9px 12px}
+header{background:var(--cream);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.nav nav{display:flex;gap:28px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.nav nav a:hover,.nav nav a.active{color:var(--rose)}
+.logo{display:block;line-height:0}
+.logo img{height:88px;width:auto;mix-blend-mode:multiply}
+.logo-text{font-family:var(--script);font-size:78px;line-height:1;color:var(--rose)}
+.cart-link{display:flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.cart-count{background:var(--rose);color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:12px}
+.nav-left{flex:1}.nav-right{flex:1;display:flex;justify-content:flex-end}
+.menu-toggle{display:none;background:none;border:0;font-size:24px;color:var(--ink)}
+
+/* Buttons */
+.btn{display:inline-block;background:var(--rose);color:#fff;border:0;padding:15px 34px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:.2s}
+.btn:hover{background:var(--rose-dark)}
+.btn.ghost{background:transparent;color:var(--rose);border:1px solid var(--rose)}
+.btn.ghost:hover{background:var(--rose);color:#fff}
+.btn.block{display:block;width:100%;text-align:center}
+
+/* Photos */
+.ph{width:100%;height:100%;object-fit:cover;display:block}
+.zoom{position:relative;width:100%;height:100%;overflow:hidden;background:var(--blush-2)}
+.zoom img{width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;transition:transform .45s ease}
+
+/* Hero */
+.hero{background:var(--blush);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1.1fr;align-items:center;min-height:580px}
+.hero-copy{padding:60px 40px 60px 0}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:16px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08}
+.hero h1{font-size:68px;margin-bottom:20px}
+.hero p{font-size:18px;color:var(--muted);max-width:440px;margin-bottom:32px}
+.hero-img{position:relative;align-self:stretch;min-height:580px;overflow:hidden}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
+
+/* Sections */
+section.block{padding:84px 0}
+.sec-head{text-align:center;margin-bottom:48px}
+.sec-head h2{font-size:44px;margin-bottom:10px}
+.sec-head p{color:var(--muted);max-width:520px;margin:0 auto}
+
+/* Product grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.card{background:#fff;border:1px solid var(--line);transition:.25s;display:block}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(165,58,91,.12)}
+.card-img{aspect-ratio:1/1;overflow:hidden;background:var(--blush-2);position:relative}
+.card-img .ph{transition:transform .6s}
+.card:hover .card-img .ph{transform:scale(1.04)}
+.badge{position:absolute;top:14px;left:14px;background:var(--rose);color:#fff;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;z-index:2}
+.card-body{padding:20px 22px 24px;text-align:center}
+.card-body .theme{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.card-body h3{font-size:26px;margin:4px 0 6px}
+.card-body .price{font-size:15px;color:var(--rose);font-weight:500}
+.dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
+.dot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.15)}
+
+/* Story banners */
+.banners{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.banner{position:relative;aspect-ratio:1.1/1;overflow:hidden;display:block}
+.banner img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.banner:hover img{transform:scale(1.04)}
+.banner:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28) 0,rgba(0,0,0,0) 38%)}
+.banner .b-title{position:absolute;top:26px;left:0;right:0;text-align:center;z-index:2;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.banner .b-title .sig{font-family:var(--script);font-size:54px;line-height:1}
+.banner .b-title .ed{font-family:var(--serif);font-weight:700;font-size:42px;letter-spacing:.14em;line-height:1.1}
+.banner span.cta{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);background:#fff;color:var(--ink);padding:13px 28px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap;z-index:2}
+
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center}
+.values .heart{color:var(--rose);font-size:28px}
+.values h3{font-size:26px;margin:8px 0}
+.values p{color:var(--muted);font-size:15px}
+
+.signup{background:var(--blush);text-align:center;padding:80px 24px}
+.signup h2{font-size:40px;margin-bottom:10px}
+.signup p{color:var(--muted);margin-bottom:26px}
+.signup form{display:flex;max-width:480px;margin:0 auto;gap:0}
+.signup input{flex:1;padding:15px 18px;border:1px solid var(--line);font-family:inherit;font-size:15px;background:#fff}
+
+/* Collection page */
+.page-head{background:var(--blush-2);text-align:center;padding:56px 24px;border-bottom:1px solid var(--line)}
+.page-head h1{font-size:54px}
+.page-head p{color:var(--muted);margin-top:8px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;padding:28px 0;flex-wrap:wrap;gap:14px}
+.filters{display:flex;gap:10px;flex-wrap:wrap}
+.chip{background:#fff;border:1px solid var(--line);padding:9px 18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.chip.on{background:var(--rose);border-color:var(--rose);color:#fff}
+select{padding:10px 14px;border:1px solid var(--line);background:#fff;font-family:inherit;font-size:14px}
+
+/* Product page */
+.crumbs{font-size:13px;color:var(--muted);padding:22px 0}
+.crumbs a:hover{color:var(--rose)}
+.pdp{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;padding-bottom:70px}
+.gallery-main{background:var(--blush-2);border:1px solid var(--line);aspect-ratio:1/1;overflow:hidden}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:12px}
+.thumb{aspect-ratio:1/1;border:1px solid var(--line);background:var(--blush-2);overflow:hidden;padding:0}
+.thumb.on{border-color:var(--rose);box-shadow:0 0 0 1px var(--rose)}
+.pdp h1{font-size:46px;margin:6px 0 8px}
+.pdp .price{font-size:24px;color:var(--rose);font-weight:500;margin-bottom:18px}
+.pdp .desc{color:var(--muted);margin-bottom:26px}
+.opt-label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;margin-bottom:10px;display:flex;gap:8px}
+.opt-label b{color:var(--rose);font-weight:500;letter-spacing:.05em;text-transform:none}
+.swatches{display:flex;gap:12px;margin-bottom:24px}
+.sw{width:38px;height:38px;border-radius:50%;border:1px solid rgba(0,0,0,.15);padding:0;position:relative}
+.sw.on{outline:2px solid var(--rose);outline-offset:3px}
+.sizes{display:flex;gap:10px;margin-bottom:24px}
+.size{padding:12px 22px;border:1px solid var(--line);background:#fff;font-size:14px}
+.size.on{border-color:var(--rose);background:var(--blush-2);color:var(--rose-dark)}
+.buy-row{display:flex;gap:14px;margin-bottom:16px}
+.qty{display:flex;border:1px solid var(--line);background:#fff}
+.qty button{width:42px;background:none;border:0;font-size:18px}
+.qty span{width:36px;text-align:center;align-self:center}
+.buy-row .btn{flex:1}
+.perks{font-size:13px;color:var(--muted);display:grid;gap:6px;margin:18px 0 26px}
+details{border-top:1px solid var(--line);padding:16px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+details p{margin-top:10px;color:var(--muted);font-size:15px}
+
+/* Cart */
+.cart-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:48px;padding:48px 0 80px}
+.line{display:grid;grid-template-columns:100px 1fr auto;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);align-items:center}
+.line .thumbbox{width:100px;height:100px;background:var(--blush-2);border:1px solid var(--line);overflow:hidden;display:block}
+.line h3{font-size:22px}
+.line small{color:var(--muted);display:block}
+.line .rm{background:none;border:0;color:var(--rose);font-size:13px;text-decoration:underline;margin-top:6px}
+.summary{background:#fff;border:1px solid var(--line);padding:30px;height:fit-content}
+.summary h3{font-size:28px;margin-bottom:18px}
+.sum-row{display:flex;justify-content:space-between;margin-bottom:12px;font-size:15px}
+.sum-row.total{font-size:20px;font-weight:500;border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
+.ship-bar{background:var(--blush-2);height:8px;border-radius:4px;overflow:hidden;margin:6px 0 8px}
+.ship-bar div{height:100%;background:var(--rose);transition:.3s}
+.ship-note{font-size:13px;color:var(--muted);margin-bottom:20px}
+.empty{text-align:center;padding:90px 0}
+.empty h2{font-size:38px;margin-bottom:12px}
+
+/* Footer */
+footer{background:var(--ink);color:#e8d9d6;padding:60px 0 30px;font-size:14px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+footer h4{font-family:var(--serif);font-size:20px;color:#fff;margin-bottom:12px;font-weight:600}
+footer a{display:block;margin-bottom:8px;opacity:.85}
+footer a:hover{opacity:1;color:var(--blush)}
+.foot-logo{font-family:var(--script);font-size:56px;color:var(--blush);line-height:1}
+.legal{border-top:1px solid rgba(255,255,255,.15);padding-top:22px;font-size:12px;opacity:.7;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:14px 26px;font-size:14px;transition:.35s;z-index:100;display:flex;gap:18px;align-items:center}
+.toast.show{transform:translate(-50%,0)}
+.toast a{color:var(--blush);text-decoration:underline}
+.preview-tag{position:fixed;bottom:14px;right:14px;background:rgba(59,42,46,.88);color:#fff;font-size:11px;letter-spacing:.12em;padding:7px 12px;z-index:90;text-transform:uppercase}
+
+@media(max-width:900px){
+  :root{--nav-h:84px}
+  .hero-grid,.pdp,.cart-grid{grid-template-columns:1fr}
+  .hero-copy{padding:44px 0}
+  .hero h1{font-size:46px}
+  .hero-img{min-height:380px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:16px}
+  .banners,.values{grid-template-columns:1fr}
+  .banner .b-title .sig{font-size:44px}
+  .banner .b-title .ed{font-size:34px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .nav nav{display:none}
+  .nav nav.open{display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--cream);padding:20px 24px;border-bottom:1px solid var(--line);gap:16px}
+  .menu-toggle{display:block}
+  .logo img{height:68px}
+  .logo-text{font-size:58px}
+  .sec-head h2{font-size:34px}
+  .line{grid-template-columns:80px 1fr}
+  .line .thumbbox{width:80px;height:80px}
+  .line > div:last-child{grid-column:2}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">FREE SHIPPING ON ORDERS OVER $50 &nbsp;·&nbsp; LIMITED-EDITION DROPS</div>
+<header>
+  <div class="wrap nav">
+    <div class="nav-left">
+      <button class="menu-toggle" id="menuBtn" aria-label="Menu">☰</button>
+      <nav id="mainNav">
+        <a href="#/" data-r="home">Home</a>
+        <a href="#/collection" data-r="collection">Shop All</a>
+        <a href="#/collection/states" data-r="states">States</a>
+        <a href="#/collection/cities" data-r="cities">Cities</a>
+      </nav>
+    </div>
+    <a href="#/" class="logo"><img src="data:image/webp;base64,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" alt="Jessica Simpson" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-text',textContent:'Jessica Simpson'}))"></a>
+    <div class="nav-right">
+      <a href="#/cart" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Jessica Simpson</div>
+        <p style="margin-top:14px;max-width:280px;opacity:.8">Soft. Comfortable. Every day. Limited-edition socks inspired by the places she's performed.</p>
+      </div>
+      <div><h4>Shop</h4><a href="#/collection">All socks</a><a href="#/collection/states">States</a><a href="#/collection/cities">Cities</a><a href="#/collection/essentials">Essentials</a></div>
+      <div><h4>Help</h4><a href="#/">Shipping</a><a href="#/">Returns</a><a href="#/">Size guide</a><a href="#/">Contact</a></div>
+      <div><h4>Follow</h4><a href="#/">Instagram</a><a href="#/">TikTok</a><a href="#/">Facebook</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Jessica Simpson Essentials. Operated under license by Creator Essentials Co.</span><span>Preview mockup, not a live store</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><span id="toastMsg">Added to cart</span><a href="#/cart">View cart</a></div>
+<div class="preview-tag">Preview mockup</div>
+
+<script>
+/* =====================================================================
+   PRODUCT IMAGES
+   Each product has a local path (put your own files in /images and they are
+   used first) and a hosted fallback URL (AI-generated placeholders).
+   Replace either with final product photography. In Shopify these become
+   the product media; the 3 sock positions drive the colour variants.
+   ===================================================================== */
+const CDN = 'https://d8j0ntlcm91z4.cloudfront.net/user_3Dwo2Ee132WGRcmWC238Fi4lMR2/';
+const PRODUCTS = [
+  { id:'essentials-crew', name:'Essentials Athletic Crew', theme:'Essentials Collection', group:'essentials',
+    price:32, pack:'3-pair pack', badge:'Bestseller',
+    local:'images/essentials.png', url:CDN+'hf_20261004_083122_8f4166a3-6353-4914-b053-67b4f336eb06.png',
+    desc:'Our everyday ribbed athletic crew in a 3-pair pack. Retro double stripes, a tiny embroidered JS heart and a cushioned foot. Soft. Comfortable. Every day.',
+    colors:[{n:'White / Rose',c:'#fbfaf8'},{n:'Blush',c:'#f2a9b4'},{n:'Black',c:'#1d1b1c'}] },
+  { id:'texas', name:'Texas', theme:'State Edition · Lifestyle Basics', group:'states', sig:'Jessica Simpson', ed:'TEXAS',
+    price:26, pack:'2-pair pack', badge:'New',
+    local:'images/texas.png', url:CDN+'hf_20261004_083140_6f5bf82b-d6c8-4a0b-a22e-48ca24f81f11.png',
+    desc:'Soft. Feminine. Americana. Embroidered longhorn crest on a ribbed crew in warm desert neutrals, with the Jessica Simpson signature on the foot.',
+    colors:[{n:'Cream',c:'#f1e8d8'},{n:'Sand',c:'#cdbb9f'},{n:'Mocha',c:'#5e4030'}] },
+  { id:'usa', name:'U.S.A.', theme:'Country Edition · Fashion. Freedom. Home.', group:'states', sig:'Jessica Simpson', ed:'USA',
+    price:26, pack:'2-pair pack', badge:'New',
+    local:'images/usa.png', url:CDN+'hf_20261004_083122_6ed6b546-aac0-4355-9ef6-5798f9cb6026.png',
+    desc:'Heart-and-flag embroidery on a soft ribbed crew in peach, ivory and navy. Made for road trips, concerts and every Fourth.',
+    colors:[{n:'Peach',c:'#f2c9ad'},{n:'Ivory',c:'#f8f5ef'},{n:'Navy',c:'#1b2750'}] },
+  { id:'nashville', name:'Nashville', theme:'City Edition · Tennessee', group:'cities',
+    price:26, pack:'2-pair pack', badge:'Limited',
+    local:'images/nashville.png', url:CDN+'hf_20261004_083122_f5ebedf6-c312-4621-ab8b-a09110fd4cbe.png',
+    desc:'A tribute to Music City. Champagne, midnight and rose ribbed crew with embroidered Nashville lettering, a guitar and a signature heart.',
+    colors:[{n:'Champagne',c:'#efe0c8'},{n:'Midnight',c:'#1c1a1d'},{n:'Rose',c:'#e07f9e'}] },
+  { id:'los-angeles', name:'Los Angeles', theme:'City Edition · California', group:'cities',
+    price:26, pack:'2-pair pack', badge:'Limited',
+    local:'images/los-angeles.png', url:CDN+'hf_20261004_083122_79c8e66b-b3cf-4c0b-88b1-d65a2b72e560.png',
+    desc:'Golden-hour tones for the City of Angels. Sunset peach, shell and deep teal with tonal palm and sun embroidery.',
+    colors:[{n:'Sunset',c:'#f3b48f'},{n:'Shell',c:'#f7f1e4'},{n:'Teal',c:'#17625e'}] },
+  { id:'new-york', name:'New York', theme:'City Edition · New York', group:'cities',
+    price:26, pack:'2-pair pack', badge:'Limited',
+    local:'images/new-york.png', url:CDN+'hf_20261004_083140_db86da15-c980-4d2a-af57-b6a9d67778ae.png',
+    desc:'City-sleek neutrals with a skyline crest. Dove grey, soft pink and black, easy to pair with sneakers or boots.',
+    colors:[{n:'Dove',c:'#a9a9aa'},{n:'Petal',c:'#f3cfd6'},{n:'Noir',c:'#161516'}] }
+];
+const SIZES = ['S/M (5–7.5)','M/L (8–10)'];
+const FREE_SHIP = 50;
+
+/* ---------- image helpers ---------- */
+const imgTag = (p,cls,alt)=>`<img class="${cls||''}" src="${p.local}" onerror="this.onerror=null;this.src='${p.url}'" alt="${alt||p.name+' socks'}" loading="lazy">`;
+/* Zoom into one of the three socks (i = 0,1,2) or into the embroidery (detail) */
+const CX=[.3,.5,.7], CXD=[.27,.5,.74];
+function zoomBox(p,i,detail){
+  const s = detail?2.8:1.7, cx = detail?CXD[i]:CX[i], cy = detail?.33:.55;
+  const t = `scale(${s}) translate(${((.5-cx)*100).toFixed(2)}%,${((.5-cy)*100).toFixed(2)}%)`;
+  return `<div class="zoom"><img src="${p.local}" onerror="this.onerror=null;this.src='${p.url}'" style="transform:${t}" alt="${p.name} ${p.colors[i].n}"></div>`;
+}
+
+/* ---------- STATE ---------- */
+let cart = [];
+try{ cart = JSON.parse(localStorage.getItem('js_cart')||'[]'); }catch(e){}
+const saveCart=()=>{ try{localStorage.setItem('js_cart',JSON.stringify(cart));}catch(e){} updateCount(); };
+const money=n=>'$'+n.toFixed(2);
+const $=s=>document.querySelector(s);
+const find=id=>PRODUCTS.find(p=>p.id===id);
+function updateCount(){ $('#cartCount').textContent = cart.reduce((a,l)=>a+l.qty,0); }
+
+/* ---------- VIEW HELPERS ---------- */
+function productCard(p){
+  return `<a class="card" href="#/product/${p.id}">
+    <div class="card-img">${p.badge?`<span class="badge">${p.badge}</span>`:''}${imgTag(p,'ph')}</div>
+    <div class="card-body">
+      <div class="theme">${p.theme}</div>
+      <h3>${p.name}</h3>
+      <div class="price">${money(p.price)} · ${p.pack}</div>
+      <div class="dots">${p.colors.map(c=>`<span class="dot" style="background:${c.c}"></span>`).join('')}</div>
+    </div></a>`;
+}
+
+/* ---------- PAGES ---------- */
+function home(){
+  const ess=find('essentials-crew'), tx=find('texas'), us=find('usa');
+  return `
+  <section class="hero"><div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Essentials Collection</div>
+      <h1>Soft. Comfortable. Every day.</h1>
+      <p>Limited-edition socks by Jessica Simpson, inspired by the cities and states she's taken the stage in.</p>
+      <a class="btn" href="#/collection">Shop the collection</a>
+    </div>
+    <div class="hero-img">${imgTag(ess,'','Jessica Simpson Essentials crew socks')}</div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="sec-head"><div class="eyebrow">The Editions</div><h2>Six ways to wear the tour</h2><p>Each edition is a limited drop. Pick your state, your city, or the everyday essentials.</p></div>
+    <div class="grid">${PRODUCTS.map(productCard).join('')}</div>
+    <div style="text-align:center;margin-top:44px"><a class="btn ghost" href="#/collection">View all</a></div>
+  </div></section>
+
+  <section class="banners">
+    <a class="banner" href="#/product/texas">${imgTag(tx,'','Texas edition socks')}<div class="b-title"><div class="sig">Jessica Simpson</div><div class="ed">TEXAS</div></div><span class="cta">Shop Texas</span></a>
+    <a class="banner" href="#/product/usa">${imgTag(us,'','USA edition socks')}<div class="b-title"><div class="sig">Jessica Simpson</div><div class="ed">USA</div></div><span class="cta">Shop U.S.A.</span></a>
+  </section>
+
+  <section class="block"><div class="wrap values">
+    <div><div class="heart">♡</div><h3>Ultra-soft ribbed cotton</h3><p>Cushioned foot, stay-put cuff and a fit made for all-day wear.</p></div>
+    <div><div class="heart">♡</div><h3>Limited-edition drops</h3><p>New states and cities released in small runs. When they're gone, they're gone.</p></div>
+    <div><div class="heart">♡</div><h3>Made for gifting</h3><p>Packaged in a signature pink band, ready to give or keep.</p></div>
+  </div></section>
+
+  <section class="signup">
+    <h2>Be first to the next drop</h2>
+    <p>Join the list for early access to new cities and states.</p>
+    <form onsubmit="event.preventDefault();showToast('Thanks! (preview only)',false)">
+      <input type="email" placeholder="Email address" required><button class="btn">Sign up</button>
+    </form>
+  </section>`;
+}
+
+function collection(filter){
+  const titles={all:'All Socks',states:'State Editions',cities:'City Editions',essentials:'Essentials'};
+  filter = titles[filter]?filter:'all';
+  const chips=['all','essentials','states','cities'].map(k=>`<a class="chip ${k===filter?'on':''}" href="#/collection${k==='all'?'':'/'+k}">${titles[k]}</a>`).join('');
+  return `
+  <div class="page-head"><h1>${titles[filter]}</h1><p>Limited-edition socks by Jessica Simpson</p></div>
+  <div class="wrap">
+    <div class="toolbar"><div class="filters">${chips}</div>
+      <select id="sort" onchange="renderGrid()"><option value="feat">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="az">A–Z</option></select>
+    </div>
+    <div class="grid" id="gridBox" style="padding-bottom:80px"></div>
+  </div>`;
+}
+let currentFilter='all';
+function renderGrid(){
+  const s=$('#sort')?$('#sort').value:'feat';
+  let list=PRODUCTS.filter(p=>currentFilter==='all'||p.group===currentFilter);
+  if(s==='lo')list.sort((a,b)=>a.price-b.price);
+  if(s==='hi')list.sort((a,b)=>b.price-a.price);
+  if(s==='az')list.sort((a,b)=>a.name.localeCompare(b.name));
+  $('#gridBox').innerHTML=list.map(productCard).join('');
+}
+
+let sel={color:0,size:0,qty:1}, gIdx=0;
+function product(id){
+  const p=find(id); if(!p) return `<div class="empty"><h2>Product not found</h2><a class="btn" href="#/collection">Back to shop</a></div>`;
+  sel={color:0,size:0,qty:1}; gIdx=0;
+  const related=PRODUCTS.filter(x=>x.id!==p.id).slice(0,3);
+  return `
+  <div class="wrap">
+    <div class="crumbs"><a href="#/">Home</a> / <a href="#/collection">Shop All</a> / ${p.name}</div>
+    <div class="pdp">
+      <div>
+        <div class="gallery-main" id="gMain"></div>
+        <div class="thumbs" id="gThumbs"></div>
+      </div>
+      <div>
+        <div class="eyebrow">${p.theme}</div>
+        <h1>${p.name}</h1>
+        <div class="price">${money(p.price)} <span style="font-size:15px;color:var(--muted)">· ${p.pack}</span></div>
+        <p class="desc">${p.desc}</p>
+        <div class="opt-label">Colour <b id="colName">${p.colors[0].n}</b></div>
+        <div class="swatches">${p.colors.map((c,i)=>`<button class="sw ${i===0?'on':''}" style="background:${c.c}" title="${c.n}" aria-label="${c.n}" onclick="pickColor('${p.id}',${i})"></button>`).join('')}</div>
+        <div class="opt-label">Size</div>
+        <div class="sizes">${SIZES.map((s,i)=>`<button class="size ${i===0?'on':''}" onclick="pickSize(${i})">${s}</button>`).join('')}</div>
+        <div class="buy-row">
+          <div class="qty"><button onclick="chQty(-1)">−</button><span id="qtyV">1</span><button onclick="chQty(1)">+</button></div>
+          <button class="btn" onclick="addToCart('${p.id}')">Add to cart</button>
+        </div>
+        <div class="perks"><span>♡ Free shipping over $${FREE_SHIP}</span><span>♡ Easy 30-day returns</span><span>♡ Limited run, once it's gone it's gone</span></div>
+        <details open><summary>Details</summary><p>Soft combed-cotton blend, ribbed crew height, cushioned foot, reinforced heel and toe. Embroidered artwork with signature on foot.</p></details>
+        <details><summary>Size &amp; fit</summary><p>S/M fits women's US 5–7.5. M/L fits women's US 8–10.</p></details>
+        <details><summary>Shipping &amp; returns</summary><p>Ships in 1–3 business days from our US and EMEA fulfillment partners. Unworn items can be returned within 30 days.</p></details>
+      </div>
+    </div>
+    <div class="sec-head" style="margin-top:20px"><h2 style="font-size:36px">You may also love</h2></div>
+    <div class="grid" style="padding-bottom:80px">${related.map(productCard).join('')}</div>
+  </div>`;
+}
+/* gallery: 0 = full photo, 1-3 = each colourway up close, 4 = embroidery detail of selected colour */
+function galView(p,i){
+  if(i===0) return imgTag(p,'ph');
+  if(i<=3) return zoomBox(p,i-1,false);
+  return zoomBox(p,sel.color,true);
+}
+function renderGallery(id){
+  const p=find(id);
+  $('#gMain').innerHTML=galView(p,gIdx);
+  $('#gThumbs').innerHTML=[0,1,2,3,4].map(i=>`<button class="thumb ${i===gIdx?'on':''}" aria-label="Photo ${i+1}" onclick="showImg('${id}',${i})">${galView(p,i)}</button>`).join('');
+}
+function syncSwatches(id){
+  const p=find(id);
+  document.querySelectorAll('.sw').forEach((el,k)=>el.classList.toggle('on',k===sel.color));
+  $('#colName').textContent=p.colors[sel.color].n;
+}
+function showImg(id,i){
+  gIdx=i;
+  if(i>=1&&i<=3){sel.color=i-1;syncSwatches(id);}
+  renderGallery(id);
+}
+function pickColor(id,i){ sel.color=i; gIdx=i+1; syncSwatches(id); renderGallery(id); }
+function pickSize(i){sel.size=i;document.querySelectorAll('.size').forEach((el,k)=>el.classList.toggle('on',k===i));}
+function chQty(d){sel.qty=Math.max(1,sel.qty+d);$('#qtyV').textContent=sel.qty;}
+function addToCart(id){
+  const key=id+'|'+sel.color+'|'+sel.size;
+  const ex=cart.find(l=>l.key===key);
+  if(ex)ex.qty+=sel.qty; else cart.push({key,id,color:sel.color,size:sel.size,qty:sel.qty});
+  saveCart(); showToast('Added to cart',true);
+}
+
+function cartPage(){
+  if(!cart.length) return `<div class="wrap empty"><h2>Your cart is empty</h2><p style="color:var(--muted);margin-bottom:24px">Time to find your next favorite pair.</p><a class="btn" href="#/collection">Shop all socks</a></div>`;
+  const sub=cart.reduce((a,l)=>a+find(l.id).price*l.qty,0);
+  const pct=Math.min(100,sub/FREE_SHIP*100);
+  const note=sub>=FREE_SHIP?'You\'ve unlocked free shipping ♡':`You're ${money(FREE_SHIP-sub)} away from free shipping`;
+  return `
+  <div class="page-head"><h1>Your Cart</h1></div>
+  <div class="wrap cart-grid">
+    <div>${cart.map((l,i)=>{const p=find(l.id);return `
+      <div class="line">
+        <a class="thumbbox" href="#/product/${p.id}">${zoomBox(p,l.color,false)}</a>
+        <div><h3>${p.name}</h3><small>${p.pack}</small><small>${p.colors[l.color].n} · ${SIZES[l.size]}</small>
+          <button class="rm" onclick="rmLine(${i})">Remove</button></div>
+        <div><div class="qty"><button onclick="lineQty(${i},-1)">−</button><span>${l.qty}</span><button onclick="lineQty(${i},1)">+</button></div>
+        <div style="text-align:right;margin-top:8px;font-weight:500">${money(p.price*l.qty)}</div></div>
+      </div>`}).join('')}</div>
+    <aside class="summary">
+      <h3>Order summary</h3>
+      <div class="ship-bar"><div style="width:${pct}%"></div></div><div class="ship-note">${note}</div>
+      <div class="sum-row"><span>Subtotal</span><span>${money(sub)}</span></div>
+      <div class="sum-row"><span>Shipping</span><span>${sub>=FREE_SHIP?'Free':'Calculated at checkout'}</span></div>
+      <div class="sum-row total"><span>Total</span><span>${money(sub)}</span></div>
+      <button class="btn block" onclick="showToast('Preview only. Shopify checkout goes here',false)">Checkout</button>
+      <p style="font-size:12px;color:var(--muted);margin-top:14px;text-align:center">Taxes and shipping calculated at checkout.</p>
+    </aside>
+  </div>`;
+}
+function lineQty(i,d){cart[i].qty+=d;if(cart[i].qty<1)cart.splice(i,1);saveCart();route();}
+function rmLine(i){cart.splice(i,1);saveCart();route();}
+
+/* ---------- TOAST ---------- */
+let tt;
+function showToast(msg,link){
+  $('#toastMsg').textContent=msg; $('.toast a').style.display=link?'':'none';
+  $('#toast').classList.add('show'); clearTimeout(tt); tt=setTimeout(()=>$('#toast').classList.remove('show'),2800);
+}
+
+/* ---------- ROUTER ---------- */
+function route(){
+  const h=(location.hash||'#/').slice(2).split('/');
+  const app=$('#app'); const r=h[0]||'home';
+  document.querySelectorAll('#mainNav a').forEach(a=>a.classList.remove('active'));
+  if(r==='home'||r===''){app.innerHTML=home();mark('home');}
+  else if(r==='collection'){currentFilter=h[1]||'all';app.innerHTML=collection(currentFilter);renderGrid();mark(currentFilter==='all'||currentFilter==='essentials'?'collection':currentFilter);}
+  else if(r==='product'){app.innerHTML=product(h[1]);if(find(h[1]))renderGallery(h[1]);}
+  else if(r==='cart'){app.innerHTML=cartPage();}
+  else{app.innerHTML=home();}
+  $('#mainNav').classList.remove('open');
+  window.scrollTo(0,0);
+}
+function mark(k){const a=document.querySelector(`#mainNav a[data-r="${k}"]`);if(a)a.classList.add('active');}
+$('#menuBtn').onclick=()=>$('#mainNav').classList.toggle('open');
+window.addEventListener('hashchange',route);
+updateCount(); route();
+</script>
+</body>
+</html>
