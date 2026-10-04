@@ -21,6 +21,7 @@ body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-heigh
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--rose);outline-offset:2px}
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 
 /* Announcement + header */
@@ -80,6 +81,33 @@ section.block{padding:84px 0}
 .card-body .price{font-size:15px;color:var(--rose);font-weight:500}
 .dots{display:flex;justify-content:center;gap:6px;margin-top:10px}
 .dot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,0,0,.15)}
+
+/* Tour carousel */
+.tour{position:relative;overflow:hidden;background:#241a1d;color:#fff;padding:84px 0 72px}
+.tour-bg{position:absolute;inset:0;z-index:0}
+.tour-bg i{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(38px) brightness(.5) saturate(1.25);transform:scale(1.25);opacity:0;transition:opacity .9s}
+.tour-bg i.on{opacity:1}
+.tour .wrap{position:relative;z-index:1}
+.tour .eyebrow{color:#f4b3c5}
+.tour .sec-head h2{color:#fff}
+.tour .sec-head p{color:#ead7d3}
+.frame{position:relative;width:min(760px,100%);margin:0 auto;aspect-ratio:3/2;background:#000;box-shadow:0 26px 64px rgba(0,0,0,.5);overflow:hidden}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .7s;pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide img{width:100%;height:100%;object-fit:cover}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:56px 24px 20px;background:linear-gradient(0deg,rgba(18,10,12,.85),rgba(18,10,12,0));display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.cap .t{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.1}
+.cap .n{font-size:13px;color:#ecdad6}
+.cap a{background:#fff;color:var(--ink);padding:10px 18px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.cap a:hover{background:var(--blush)}
+.tour-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.55);background:rgba(18,10,12,.45);color:#fff;font-size:24px;line-height:1;z-index:3}
+.tour-arrow:hover{background:rgba(18,10,12,.75)}
+.tour-arrow.prev{left:14px}
+.tour-arrow.next{right:14px}
+.tour :focus-visible{outline-color:#fff}
+.dots-nav{display:flex;justify-content:center;gap:10px;margin-top:24px}
+.dots-nav button{width:10px;height:10px;border-radius:5px;border:0;background:rgba(255,255,255,.38);padding:0;transition:width .25s,background .25s}
+.dots-nav button[aria-current="true"]{width:30px;background:#fff}
 
 /* Story banners */
 .banners{display:grid;grid-template-columns:1fr 1fr;gap:0}
@@ -191,9 +219,18 @@ footer a:hover{opacity:1;color:var(--blush)}
   .logo img{height:68px}
   .logo-text{font-size:58px}
   .sec-head h2{font-size:34px}
+  .tour{padding:64px 0 56px}
+  .cap{padding:36px 14px 12px;flex-wrap:nowrap;align-items:center}
+  .cap .t{font-size:20px}
+  .cap .n{display:none}
+  .cap a{padding:8px 12px;font-size:11px;letter-spacing:.12em;white-space:nowrap}
+  .tour-arrow{width:38px;height:38px;font-size:20px}
   .line{grid-template-columns:80px 1fr}
   .line .thumbbox{width:80px;height:80px}
   .line > div:last-child{grid-column:2}
+}
+@media(prefers-reduced-motion:reduce){
+  .slide,.tour-bg i,.dots-nav button,.zoom img,.card-img .ph,.banner img{transition:none}
 }
 </style>
 </head>
@@ -211,7 +248,7 @@ footer a:hover{opacity:1;color:var(--blush)}
         <a href="#/collection/cities" data-r="cities">Cities</a>
       </nav>
     </div>
-    <a href="#/" class="logo"><img src="data:image/webp;base64,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" alt="Jessica Simpson" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-text',textContent:'Jessica Simpson'}))"></a>
+    <a href="#/" class="logo"><img src="images/Jessica_Simpson_Logo.webp" alt="Jessica Simpson" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'logo-text',textContent:'Jessica Simpson'}))"></a>
     <div class="nav-right">
       <a href="#/cart" class="cart-link">Cart <span class="cart-count" id="cartCount">0</span></a>
     </div>
@@ -240,11 +277,11 @@ footer a:hover{opacity:1;color:var(--blush)}
 
 <script>
 /* =====================================================================
-   PRODUCT IMAGES
-   Each product has a local path (put your own files in /images and they are
-   used first) and a hosted fallback URL (AI-generated placeholders).
-   Replace either with final product photography. In Shopify these become
-   the product media; the 3 sock positions drive the colour variants.
+   FILES THIS PAGE EXPECTS (put them in an /images folder next to index.html)
+   Jessica_Simpson_Logo.webp
+   essentials.png, texas.png, usa.png, nashville.png, los-angeles.png, new-york.png
+   js1.jpeg, js2.jpeg, js3.jpeg, js4.jpeg   (concert photos for the carousel)
+   If a product image is missing locally, a hosted AI-generated placeholder is used.
    ===================================================================== */
 const CDN = 'https://d8j0ntlcm91z4.cloudfront.net/user_3Dwo2Ee132WGRcmWC238Fi4lMR2/';
 const PRODUCTS = [
@@ -282,6 +319,25 @@ const PRODUCTS = [
 const SIZES = ['S/M (5–7.5)','M/L (8–10)'];
 const FREE_SHIP = 50;
 
+/* =====================================================================
+   TOUR CAROUSEL: edit the titles / notes / links here.
+   Replace the titles with real venues, cities and dates when you have them.
+   ===================================================================== */
+const TOUR = [
+  { img:'images/js1.jpeg', title:'Luck Reunion', note:'Barn Stage',
+    alt:'Performing on the Barn Stage at Luck Reunion in front of an American flag',
+    href:'#/product/texas', cta:'Shop Texas' },
+  { img:'images/js2.jpeg', title:'Live on the road', note:'Outdoor stage, big city crowd',
+    alt:'Singing into a microphone on an outdoor stage with a drum kit behind her',
+    href:'#/collection/cities', cta:'Shop city editions' },
+  { img:'images/js3.jpeg', title:'Every stop, a new edition', note:'Sequin jacket, turquoise ring',
+    alt:'Smiling on stage in a sequin jacket holding a microphone',
+    href:'#/collection/states', cta:'Shop state editions' },
+  { img:'images/js4.jpeg', title:'Made for the show', note:'Soft. Comfortable. Every day.',
+    alt:'Mid-song on stage with one arm stretched out, sequin jacket catching the light',
+    href:'#/collection', cta:'Shop all socks' }
+];
+
 /* ---------- image helpers ---------- */
 const imgTag = (p,cls,alt)=>`<img class="${cls||''}" src="${p.local}" onerror="this.onerror=null;this.src='${p.url}'" alt="${alt||p.name+' socks'}" loading="lazy">`;
 /* Zoom into one of the three socks (i = 0,1,2) or into the embroidery (detail) */
@@ -313,6 +369,65 @@ function productCard(p){
     </div></a>`;
 }
 
+/* ---------- TOUR CAROUSEL ---------- */
+function tourHTML(){
+  const n = TOUR.length;
+  return `
+  <section class="tour" aria-roledescription="carousel" aria-label="Jessica Simpson on tour">
+    <div class="tour-bg" aria-hidden="true">${TOUR.map((s,i)=>`<i class="${i===0?'on':''}" style="background-image:url('${s.img}')"></i>`).join('')}</div>
+    <div class="wrap">
+      <div class="sec-head"><div class="eyebrow">On tour</div><h2>Live on the road</h2><p>Every edition starts with a stop on the tour.</p></div>
+      <div class="frame" id="tourFrame" tabindex="0" aria-label="Concert photos. Use the arrow keys to change photo.">
+        ${TOUR.map((s,i)=>`
+        <div class="slide ${i===0?'on':''}" role="group" aria-roledescription="slide" aria-label="${i+1} of ${n}">
+          <img src="${s.img}" alt="${s.alt}" ${i===0?'':'loading="lazy"'}>
+          <div class="cap"><div><div class="t">${s.title}</div><div class="n">${s.note}</div></div><a href="${s.href}">${s.cta}</a></div>
+        </div>`).join('')}
+        <button class="tour-arrow prev" id="tPrev" aria-label="Previous photo">‹</button>
+        <button class="tour-arrow next" id="tNext" aria-label="Next photo">›</button>
+      </div>
+      <div class="dots-nav">${TOUR.map((s,i)=>`<button aria-label="Go to photo ${i+1}" aria-current="${i===0}" data-i="${i}"></button>`).join('')}</div>
+    </div>
+  </section>`;
+}
+let tourTimer;
+function stopTour(){ clearInterval(tourTimer); }
+function initTour(){
+  const frame = $('#tourFrame'); if(!frame) return;
+  const slides = [...frame.querySelectorAll('.slide')];
+  const bgs = [...document.querySelectorAll('.tour-bg i')];
+  const dots = [...document.querySelectorAll('.dots-nav button')];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = 0;
+  const show = n => {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s,k)=>{ s.classList.toggle('on',k===i); s.inert = (k!==i); });
+    bgs.forEach((b,k)=>b.classList.toggle('on',k===i));
+    dots.forEach((d,k)=>d.setAttribute('aria-current',String(k===i)));
+  };
+  const play = () => { stopTour(); if(!reduce) tourTimer = setInterval(()=>show(i+1),6000); };
+  $('#tPrev').onclick = () => { show(i-1); play(); };
+  $('#tNext').onclick = () => { show(i+1); play(); };
+  dots.forEach(d=>d.onclick = () => { show(+d.dataset.i); play(); });
+  const section = frame.closest('.tour');
+  section.addEventListener('mouseenter', stopTour);
+  section.addEventListener('mouseleave', play);
+  section.addEventListener('focusin', stopTour);
+  section.addEventListener('focusout', play);
+  frame.addEventListener('keydown', e => {
+    if(e.key==='ArrowLeft'){ show(i-1); play(); }
+    if(e.key==='ArrowRight'){ show(i+1); play(); }
+  });
+  let x0 = null;
+  frame.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive:true});
+  frame.addEventListener('touchend', e => {
+    if(x0===null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if(Math.abs(dx) > 40){ show(i + (dx<0 ? 1 : -1)); play(); }
+  });
+  show(0); play();
+}
+
 /* ---------- PAGES ---------- */
 function home(){
   const ess=find('essentials-crew'), tx=find('texas'), us=find('usa');
@@ -332,6 +447,8 @@ function home(){
     <div class="grid">${PRODUCTS.map(productCard).join('')}</div>
     <div style="text-align:center;margin-top:44px"><a class="btn ghost" href="#/collection">View all</a></div>
   </div></section>
+
+  ${tourHTML()}
 
   <section class="banners">
     <a class="banner" href="#/product/texas">${imgTag(tx,'','Texas edition socks')}<div class="b-title"><div class="sig">Jessica Simpson</div><div class="ed">TEXAS</div></div><span class="cta">Shop Texas</span></a>
@@ -482,14 +599,15 @@ function showToast(msg,link){
 
 /* ---------- ROUTER ---------- */
 function route(){
+  stopTour();
   const h=(location.hash||'#/').slice(2).split('/');
   const app=$('#app'); const r=h[0]||'home';
   document.querySelectorAll('#mainNav a').forEach(a=>a.classList.remove('active'));
-  if(r==='home'||r===''){app.innerHTML=home();mark('home');}
+  if(r==='home'||r===''){app.innerHTML=home();mark('home');initTour();}
   else if(r==='collection'){currentFilter=h[1]||'all';app.innerHTML=collection(currentFilter);renderGrid();mark(currentFilter==='all'||currentFilter==='essentials'?'collection':currentFilter);}
   else if(r==='product'){app.innerHTML=product(h[1]);if(find(h[1]))renderGallery(h[1]);}
   else if(r==='cart'){app.innerHTML=cartPage();}
-  else{app.innerHTML=home();}
+  else{app.innerHTML=home();initTour();}
   $('#mainNav').classList.remove('open');
   window.scrollTo(0,0);
 }
